@@ -1,0 +1,41 @@
+version: '2'
+
+services:
+  proxy:
+    image: traefik
+    command: --web --docker
+    restart: always
+    networks:
+      - webgateway
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /mnt/traefik/traefik.toml:/traefik.toml
+      - /mnt/traefik/acme:/etc/traefik/acme
+    labels:
+      - traefik.enable=false
+  vault:
+    image: vault
+    restart: always
+    command: server
+    networks:
+      - webgateway
+    cap_add:
+      - IPC_LOCK
+    volumes:
+      - /mnt/vault:/vault/file
+    environment:
+      VAULT_LOCAL_CONFIG: '{"backend": {"file": {"path": "/vault/file"}}, "listener" :{ "tcp": { "address" : "0.0.0.0:8200", "tls_disable" : "true"}}'
+    labels:
+      - traefik.docker.network=test-vault_webgateway
+      - traefik.enable=true
+      - traefik.port=8200
+      - traefik.protocol=http
+      - traefik.frontend.rule=Host:domain.tld
+networks:
+  webgateway:
+    driver: bridge
+
