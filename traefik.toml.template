@@ -10,13 +10,14 @@ defaultEntryPoints = ["http", "https"]
   [entryPoints.https.tls]
 
 [acme]
-caServer = "https://acme-staging.api.letsencrypt.org/directory"
-email = "andrewsav@domain.tld"
+#caServer = "https://acme-staging.api.letsencrypt.org/directory"
+email = "mail@domain.tld"
 storage = "/etc/traefik/acme/acme.json"
 entryPoint = "https"
 
 [[acme.domains]]
-  main = "domain.tld"
+  main = "vault.domain.tld"
+  sans = ["goldfish.domain.tld"]
 
 [docker]
 endpoint = "unix:///var/run/docker.sock"

@@ -34,8 +34,23 @@ services:
       - traefik.enable=true
       - traefik.port=8200
       - traefik.protocol=http
-      - traefik.frontend.rule=Host:domain.tld
+      - traefik.frontend.rule=Host:vault.domain.tld
+  goldfish:
+    image: andrewsav/goldfish
+    restart: always
+    cap_add:
+      - IPC_LOCK
+    networks:
+      - webgateway
+    environment:
+      VAULT_LOCAL_CONFIG: '{"backend": {"file": {"path": "/vault/file"}}, "listener" :{ "tcp": { "address" : "0.0.0.0:8200", "tls_disable" : "true"}}'
+      GOLDFISH_LOCAL_CONFIG: '{"listener" :{ "tcp": { "address" : "0.0.0.0:8000", "tls_disable" : 1}},"vault" : { "address" : "https://vault.domain.tld" }}}'
+    labels:
+      - traefik.docker.network=test-vault_webgateway
+      - traefik.enable=true
+      - traefik.port=8000
+      - traefik.protocol=http
+      - traefik.frontend.rule=Host:goldfish.domain.tld
 networks:
   webgateway:
     driver: bridge
-

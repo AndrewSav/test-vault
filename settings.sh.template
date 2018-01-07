@@ -1,0 +1,5 @@
+#!/bin/bash
+
+EMAIL="mail@domain.tld"
+VAULT="vault.domain.tld"
+GOLDFISH="goldfish.domain.tld"
