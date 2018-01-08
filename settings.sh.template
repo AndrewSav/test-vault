@@ -1,5 +1,10 @@
 #!/bin/bash
 
+#Url for Let's Encript Certificates registration
 EMAIL="mail@domain.tld"
+
+#Domain where vault will be hosted (port 443)
 VAULT="vault.domain.tld"
+
+#Domain where goldfish will be hosted (port 443)
 GOLDFISH="goldfish.domain.tld"

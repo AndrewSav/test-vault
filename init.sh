@@ -16,8 +16,8 @@ fi
 source $SETTINGS
 
 echo "Email: $EMAIL"
-echo "Vault:$VAULT"
-echo "Goldfish:$GOLDFISH"
+echo "Vault: $VAULT"
+echo "Goldfish: $GOLDFISH"
 
 sed "s/mail@domain.tld/$EMAIL/g" traefik.toml.template > traefik.toml
 sed "s/vault.domain.tld/$VAULT/g" traefik.toml > traefik.toml.tmp && mv traefik.toml.tmp traefik.toml
