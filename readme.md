@@ -2,6 +2,8 @@
 
 These are files needed to quickly set up a test instance of [Vault](https://www.vaultproject.io)/[Goldfish](https://github.com/Caiyeon/goldfish) in production mode (that is not in "Dev" mode).
 
+You will need to own a domain and be able to point this domain to the ip address of the machine you are running this setup on.
+
 It uses:
 
 - [Official Vault contailer](https://hub.docker.com/_/vault/)
