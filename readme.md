@@ -32,4 +32,4 @@ Neither Vault nor Goldfish will be initialized. You will need to do this separat
 - [Vault](https://www.vaultproject.io/intro/getting-started/deploy.html#initializing-the-vault)
 - [Goldfish](https://github.com/Caiyeon/goldfish/wiki/Production-Deployment#1-write-goldfish-approle)
 
-This repository was create to test [Automatic Unseal Script](https://github.com/andrewsav-datacom/vault-unseal) for Vaut/Goldfish. There is an example script for intializing Vault/Goldfish in the previous link.
+This repository was create to test [Automatic Unseal Script](https://github.com/andrewsav-datacom/vault-unseal) for Vaut/Goldfish. There is an [example script](https://github.com/andrewsav-datacom/vault-unseal/blob/master/example-init.sh) for intializing Vault/Goldfish in the previous link.
